@@ -1,0 +1,144 @@
+/* Загальний стиль сторінки */
+body, html {
+    min-height: 100vh;
+    height: fit-content;
+    padding: 25px;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;}
+
+/* Контейнер з центральним вирівнюванням */
+.container {
+    text-align: center;
+    justify-content: stretch;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.gradLight {
+    background: linear-gradient(135deg, #FFDAB9, #FFA07A);
+}
+
+/* gradient2 — схожий на фон з картинки */
+.gradDark {
+    background: linear-gradient(135deg, #FFA07A, #dd7368);
+}
+
+/* Картинка */
+.team-pic {
+    border-radius: 12px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+/* Назва команди */
+.team-name {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Опис команди */
+.team-desc {
+    font-size: 18px;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+/* Заголовок для учасників */
+.members-title {
+    font-size: 32px;
+}
+
+/* Контейнер для учасників */
+.team-members {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: stretch; /* розтягує всі елементи до однакової висоти */
+}
+
+/* Окремий учасник */
+.member {
+    text-align: center;
+}
+
+/* Фото учасника */
+.member img {
+    width: 40%; /* займає всю ширину контейнера */
+    object-fit: cover;
+    margin-bottom: 10px;
+    flex: 1; /* розтягується, щоб зайняти доступний простір */
+}
+
+/* Ім'я учасника */
+.member-name {
+    font-size: 18px;
+    color: #222;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Title */
+.member-name-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Photo centered */
+.member-photo {
+    width: 168px;
+    height: 228px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
+/* Description text */
+.member-desc {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.back-button {
+    display: inline-flex;
+    width: auto;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 25px;
+    background: #904238;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #000;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.back-button:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    background: #7a332a;
+
+}
+
+.knife-icon {
+    transform: rotate(-90deg) scaleX(-1);
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover .knife-icon {
+    transform: rotate(-90deg) scaleX(-1) translateY(-10px);
+}
