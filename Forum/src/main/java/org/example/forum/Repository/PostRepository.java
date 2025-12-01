@@ -12,10 +12,14 @@ public class PostRepository {
     private final List<Post> posts = new ArrayList<>();
 
     public PostRepository() {
-        posts.add(new Post(1, 1, "Admin", "No crying"));
-        posts.add(new Post(2, 1, "Admin", "No swearing"));
-        posts.add(new Post(3, 1, "Guest", "Nah bro this too much"));
-        posts.add(new Post(4, 1, "Admin", "Yeah man that is tough, anyway please register on the forum so i can ban you, thx"));
+        posts.add(new Post(1, 1, "philia", "Hello everyone. I`m philia, site manager."));
+        posts.add(new Post(1, 1, "philia", "The rule here is: ou have to love Lily. That`s all."));
+        posts.add(new Post(2, 1, "philia", " So feel free to write here anytime about your passion for Lily"));
+
+        posts.add(new Post(1, 2, "blue cat", "Hello everyone, I`m a blue cat. I never knew there was a site like this"));
+        posts.add(new Post(2, 2, "blue cat", "So you probably don`t think I`m a true fan. But I hope I`m welcome"));
+        posts.add(new Post(3, 2, "philia", "Hello, blue cat, we welcome you in our tight community. Please check the first topic on the site: 'What is the forum about' to get all the information you need."));
+
     }
 
     public List<Post> findByTopicId(int topicId) {

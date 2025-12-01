@@ -25,6 +25,7 @@ public class ForumController {
     @Autowired
     private PrototypeHelper prototypeHelper;
 
+/*
     // Home → list of topics
     @GetMapping("/")
     public String index(Model model) {
@@ -32,6 +33,7 @@ public class ForumController {
         model.addAttribute("protoId", prototypeHelper.getCreatedAt());
         return "topics";
     }
+*/
 
     // /topics → also list of topics
     @GetMapping("/topics")

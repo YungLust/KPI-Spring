@@ -1,0 +1,17 @@
+.bg-pic {
+    background-image: url('bg-pic.jpg'); /* correct */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Opacity variants */
+.bg-pic-color-100 { background-color: rgba(36, 124, 222, 1); }
+.bg-pic-color-90  { background-color: rgba(36, 124, 222, 0.9); }
+.bg-pic-color-80  { background-color: rgba(36, 124, 222, 0.8); }
+.bg-pic-color-70  { background-color: rgba(36, 124, 222, 0.7); }
+.bg-pic-color-60  { background-color: rgba(36, 124, 222, 0.6); }
+.bg-pic-color-50  { background-color: rgba(36, 124, 222, 0.5); }
+.bg-pic-color-40  { background-color: rgba(36, 124, 222, 0.4); }
+.bg-pic-color-30  { background-color: rgba(36, 124, 222, 0.3); }
+.bg-pic-color-20  { background-color: rgba(36, 124, 222, 0.2); }
+.bg-pic-color-10  { background-color: rgba(36, 124, 222, 0.1); }
