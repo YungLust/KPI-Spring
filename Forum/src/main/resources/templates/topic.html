@@ -22,6 +22,29 @@
     <!-- Topic -->
     <h1 class="text-3xl font-bold text-white" th:text="${topic.title}"></h1>
     <p class="text-white mt-2 mb-8" th:text="${topic.description}"></p>
+    <h2 class="text-2xl font-semibold text-black" th:text="'<by: ' + ${p.author} + '>'">
+    </h2>
+    <!--- if description is not provided than put title in desc-->
+    <h2 class="text-2xl font-semibold text-black pt-2"
+        th:text="${topic.description ?: ${topic.title}}">
+    </h2>
+
+
+    <!-- Add Post -->
+    <form method="post" class="bg-white rounded-lg shadow p-6 space-y-4">
+        <div>
+            <label class="block text-gray-800 mb-1">Leave a comment
+            <textarea name="text"
+                      class="w-full border rounded-lg px-3 py-2 h-28 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </textarea>
+            </label>
+        </div>
+
+        <button type="submit"
+                class="px-6 py-2 bg-black hover:bg-gray-900 text-white rounded-lg transition">
+            Send
+        </button>
+    </form>
 
     <!-- Posts -->
     <div class="space-y-4 mb-10">
@@ -29,32 +52,27 @@
         <div th:each="p : ${posts}" class="bg-white shadow rounded-lg p-4">
             <div class="text-gray-800 whitespace-pre-wrap" th:text="${p.text}"></div>
             <div class="text-sm text-gray-500 text-right mt-4" th:text="'<From: ' + ${p.author} + '>'"></div>
+
+            <!-- user status badge -->
+            <div class="absolute top-4 right-4" th:switch="${p.userStatus}">
+
+                <div th:case="'ADMIN'" class="w-8 h-8 bg-black rounded-full flex items-center justify-center">
+                    <img th:src="@{/svg-icons/admin.svg}" class="w-5 h-5" alt="admin-icon" />
+                </div>
+
+                <div th:case="'NEWBIE'" class="w-8 h-8 bg-black rounded-full flex items-center justify-center">
+                    <img th:src="@{/svg-icons/newbie.svg}" class="w-5 h-5" alt="newbie-icon" />
+                </div>
+
+                <div th:case="*" class="w-8 h-8 bg-black rounded-full flex items-center justify-center">
+                    <img th:src="@{/svg-icons/user.svg}" class="w-5 h-5" alt="user-icon" />
+                </div>
+
+            </div>
+
         </div>
 
     </div>
-
-    <!-- Add Post -->
-    <form method="post" class="bg-white rounded-lg shadow p-6 space-y-4">
-
-        <div>
-            <label class="block text-gray-800 mb-1">Author</label>
-            <input name="author"
-                   class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-        </div>
-
-        <div>
-            <label class="block text-gray-800 mb-1">Message</label>
-            <textarea name="text"
-                      class="w-full border rounded-lg px-3 py-2 h-28 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                </textarea>
-        </div>
-
-        <button type="submit"
-                class="px-6 py-2 bg-black hover:bg-gray-900 text-white rounded-lg transition">
-            Send
-        </button>
-
-    </form>
 
 </div>
 

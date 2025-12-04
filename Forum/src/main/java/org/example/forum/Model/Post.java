@@ -3,13 +3,13 @@ package org.example.forum.Model;
 public class Post {
     private int id;
     private int topicId;
-    private String author;
+    private int userId;
     private String text;
 
-    public Post(int id, int topicId, String author, String text) {
+    public Post(int id, int topicId, int userId, String text) {
         this.id = id;
         this.topicId = topicId;
-        this.author = author;
+        this.userId = userId;
         this.text = text;
     }
 
@@ -29,12 +29,12 @@ public class Post {
         this.topicId = topicId;
     }
 
-    public String getAuthor() {
-        return author;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getText() {

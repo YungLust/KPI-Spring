@@ -10,8 +10,8 @@ public class TopicRepository {
     private final Map<Integer, Topic> topics = new HashMap<>();
 
     public TopicRepository() {
-        topics.put(1, new Topic(1, "What is the forum about", "Starter post for the forum. Purpose of forum and rules", "philia"));
-        topics.put(2, new Topic(2, "I`m new in your community", "A newbie in your community just found this site yesterday.", "blue cat"));
+        topics.put(1, new Topic(1,1, "What is the forum about", "Starter post for the forum. Purpose of forum and rules"));
+        topics.put(2, new Topic(2, 2, "I`m new in your community", "Just found this site yesterday." ));
     }
 
     public List<Topic> findAll() {

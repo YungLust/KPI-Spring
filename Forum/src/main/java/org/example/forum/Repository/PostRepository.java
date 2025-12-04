@@ -12,13 +12,13 @@ public class PostRepository {
     private final List<Post> posts = new ArrayList<>();
 
     public PostRepository() {
-        posts.add(new Post(1, 1, "philia", "Hello everyone. I`m philia, site manager."));
-        posts.add(new Post(1, 1, "philia", "The rule here is: ou have to love Lily. That`s all."));
-        posts.add(new Post(2, 1, "philia", " So feel free to write here anytime about your passion for Lily"));
+        posts.add(new Post(1, 1, 1, "Hello everyone. I`m philia, site manager."));
+        posts.add(new Post(1, 1, 1, "The rule here is: ou have to love Lily. That`s all."));
+        posts.add(new Post(2, 1, 1, " So feel free to write here anytime about your passion for Lily"));
 
-        posts.add(new Post(1, 2, "blue cat", "Hello everyone, I`m a blue cat. I never knew there was a site like this"));
-        posts.add(new Post(2, 2, "blue cat", "So you probably don`t think I`m a true fan. But I hope I`m welcome"));
-        posts.add(new Post(3, 2, "philia", "Hello, blue cat, we welcome you in our tight community. Please check the first topic on the site: 'What is the forum about' to get all the information you need."));
+        posts.add(new Post(1, 2, 3, "Hello everyone, I`m a blue cat. I never knew there was a site like this"));
+        posts.add(new Post(2, 2, 3, "So you probably don`t think I`m a true fan. But I hope I`m welcome"));
+        posts.add(new Post(3, 2, 1, "Hello, blue cat, we welcome you in our tight community. Please check the first topic on the site: 'What is the forum about' to get all the information you need."));
 
     }
 

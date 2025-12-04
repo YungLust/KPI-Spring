@@ -2,24 +2,24 @@ package org.example.forum.Model;
 
 public class Topic {
     private int id;
+    private int userId;
     private String title;
     private String description;
-    private String author;
 
 
-    public Topic(int id, String title, String description, String author) {
+    public Topic(int id, int userId, String title, String description) {
         this.id = id;
+        this.userId = userId;
         this.title = title;
         this.description = description;
-        this.author = author;
     }
 
-    public String getAuthor() {
-        return author;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getId() {
