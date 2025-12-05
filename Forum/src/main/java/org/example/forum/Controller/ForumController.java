@@ -54,8 +54,7 @@ public class ForumController {
     public String topic(@PathVariable int id, Model model) {
         model.addAttribute("topic", topicService.getTopic(id));
         model.addAttribute("posts", postService.getPosts(id));
-        model.addAttribute("users", userService.getAllUsers());   // ← ДОДАВ
-        return "topic";  // show topic.html
+        return "topic";  // show template topic.html
     }
 
     // Add post

@@ -3,6 +3,7 @@ package org.example.forum.Service;
 import org.example.forum.DTO.PostView;
 import org.example.forum.Model.Post;
 import org.example.forum.Model.User;
+import org.example.forum.Model.UserStatus;
 import org.example.forum.Repository.PostRepository;
 import org.example.forum.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,17 +27,24 @@ public class PostService {
         this.userRepo = userRepo;
     }
 
-    //transform topicID to DTO
+    //get all posts in topic and transform them to DTO
     public List<PostView> getPosts(int topicId) {
         return postRepo.findByTopicId(topicId).stream().map(post -> {
-
-            User u = userRepo.findById(post.getUserId()); // беремо автора
-
-            return new PostView(
-                    post.getText(),
-                    u.getName(),
-                    u.getStatus()
-            );
+            User u = userRepo.findById(post.getUserId()); // get post`s author by userId
+            if (u == null) {
+                return new PostView(
+                        post.getText(),
+                        "unknown-user:"+post.getUserId(),
+                        UserStatus.UNKNOWN.name()
+                );
+            }
+             else {
+                return new PostView(
+                        post.getText(),
+                        u.getName(),
+                        u.getStatus()
+                );
+            }
 
         }).toList();
     }

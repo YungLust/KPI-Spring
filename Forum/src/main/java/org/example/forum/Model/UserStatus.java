@@ -4,5 +4,7 @@ public enum UserStatus {
     ADMIN,
     NEWBIE,
     USER,
-    BANNED
+    BANNED,
+    DELETED,
+    UNKNOWN
 }
