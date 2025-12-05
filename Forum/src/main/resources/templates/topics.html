@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Topics</title>
+    <title>Lilyphilia: Topics</title>
     <!-- link css -->
     <link rel="stylesheet" th:href="@{/style.css}"/>
+    <!-- link favicon -->
+    <link rel="icon" type="image/png" th:href="@{/favicon.png}"/>
 </head>
 
 <body class="bg-pic-color-100">
@@ -28,20 +30,8 @@
         <a href="/topics/new"
            class="flex items-center gap-2 px-4 py-2 bg-black hover:bg-gray-900
                   text-white font-medium rounded-lg shadow transition">
-
-            <!-- Plus Icon
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 fill="none"
-                 viewBox="0 0 24 24"
-                 stroke-width="2"
-                 stroke="currentColor"
-                 class="w-5 h-5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
-            </svg>
-            -->
-
-            <img src="../static/svg-icons/plus.svg" alt="plus-icon"/>
             Add new
+            <img th:src="@{/svg-icons/plus.svg}" class="w-7 h-7" alt="plus-icon" />
         </a>
     </div>
 
