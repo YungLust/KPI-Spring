@@ -31,17 +31,21 @@
 
 
     <!-- Add Post -->
-    <form method="post" class="bg-white rounded-lg shadow p-6 space-y-4">
-        <div>
-            <label class="block text-gray-800 mb-1">Leave a comment
-                <textarea name="text"
-                          class="w-full border rounded-lg px-3 py-2 h-28 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                </textarea>
-            </label>
-        </div>
+    <form method="post"
+          th:action="@{'/topic/' + ${topic.id} + '/post'}"
+          class="bg-white rounded-lg shadow p-6 space-y-4">
+
+        <!-- Add temporary userId for testing -->
+        <input type="hidden" name="userId" value="1"/>
+
+        <label class="block text-gray-800 mb-1">
+            Leave a comment
+            <textarea name="text"
+                      class="w-full border rounded-lg px-3 py-2 h-28"></textarea>
+        </label>
 
         <button type="submit"
-                class="px-6 py-2 bg-black hover:bg-gray-900 text-white rounded-lg transition">
+                class="px-6 py-2 bg-black text-white rounded-lg">
             Send
         </button>
     </form>
@@ -54,6 +58,7 @@
 
             <!-- TOP ROW: post text (left) + badge (right) -->
             <div class="flex justify-between items-start gap-4">
+
                 <!-- LEFT: post text -->
                 <div class="flex-1 text-gray-800 whitespace-pre-wrap" th:text="${p.text()}"></div>
 
@@ -75,16 +80,70 @@
                 </div>
             </div>
 
-            <!-- BOTTOM ROW: author label (right aligned) -->
-            <div class="text-sm text-gray-500 mt-2 text-right"
-                 th:text="${'<From: ' + p.author() + '>'}">
+            <!-- BOTTOM ROW: author label + btns(right aligned) -->
+            <div class="flex justify-end items-center gap-4 mt-2 text-sm text-gray-500">
+                <div class="flex justify-end items-center gap-4 mt-2 text-sm text-gray-500">
+
+                    <!-- Edit btn -->
+                    <button
+                            class="text-blue-600 hover:underline"
+                            th:onclick="|editPost(${p.id})|">
+                        Edit
+                    </button>
+
+                    <!-- Delete btn -->
+                    <button
+                            class="text-red-600 hover:underline"
+                            th:onclick="|deletePost(${p.id})|">
+                        Delete
+                    </button>
+
+                </div>
+
+                <!-- Author -->
+                <span th:text="${'<From: ' + p.author() + '>'}"></span>
+
+
             </div>
+
 
         </div>
 
     </div>
 
 </div>
+
+<script>
+    function editPost(postId) {
+        const newText = prompt("Edit post text:");
+        if (!newText) return;
+
+        fetch(`/api/posts/${postId}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ text: newText })
+        })
+            .then(res => {
+                if (res.status === 200) location.reload();
+                else if (res.status === 404) alert("Post not found");
+                else alert("Failed to edit post");
+            });
+    }
+
+    function deletePost(postId) {
+        if (!confirm("Delete this post?")) return;
+
+        fetch(`/api/posts/${postId}`, { method: "DELETE" })
+            .then(res => {
+                if (res.status === 204) location.reload();
+                else if (res.status === 404) alert("Post not found");
+                else alert("Failed to delete post");
+            });
+    }
+</script>
+
+
+
 
 </body>
 </html>

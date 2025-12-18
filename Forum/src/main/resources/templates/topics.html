@@ -23,16 +23,40 @@
 <!-- MAIN CONTENT -->
 <div class="max-w-4xl mx-auto py-12 px-4">
 
-    <!-- Title + Add New Button -->
-    <div class="flex items-center justify-between mb-8">
+    <!-- Top panel -->
+    <div class="flex items-center justify-between mb-8 gap-6">
+
+        <!-- Title - right side -->
         <h1 class="text-3xl font-bold text-white">Topics</h1>
 
-        <a href="/topics/new"
-           class="flex items-center gap-2 px-4 py-2 bg-black hover:bg-gray-900
-                  text-white font-medium rounded-lg shadow transition">
-            Add new
-            <img th:src="@{/svg-icons/plus.svg}" class="w-7 h-7" alt="plus-icon" />
-        </a>
+        <!-- Top panel left side -->
+        <div class="flex items-center gap-4">
+
+            <!-- Search bar -->
+            <form method="get" action="/topics" class="flex">
+                <input
+                        type="text"
+                        name="search"
+                        placeholder="Search topics..."
+                        th:value="${search}"
+                        class="w-64 px-4 py-2 rounded-lg
+                       border border-gray-500
+                       focus:outline-none focus:ring-2 focus:ring-black"
+                />
+            </form>
+
+            <!-- Add new btn -->
+            <a href="/topics/new"
+               class="flex items-center gap-2 px-4 py-2
+                  bg-black hover:bg-gray-900
+                  text-white font-medium
+                  rounded-lg shadow transition">
+                Add new
+                <img th:src="@{/svg-icons/plus.svg}"
+                     class="w-7 h-7"
+                     alt="plus-icon" />
+            </a>
+        </div>
     </div>
 
     <!-- Topics List -->
@@ -42,10 +66,60 @@
            class="block bg-white shadow rounded-lg p-6 hover:shadow-lg transition">
 
             <h2 class="text-2xl font-semibold text-black" th:text="${t.title}"></h2>
-            <p class="text-gray-800 mt-2" th:text="${t.description}"></p>
+            <p class="text-gray-800 mt-2"
+               th:text="${t.description != null ? t.description : t.title}">
+            </p>
 
         </a>
     </div>
+    <!-- Pagination -->
+    <div class="flex items-center justify-center gap-6 mt-10">
+
+        <!-- Previous -->
+        <a th:if="${page > 0}"
+           th:href="@{/topics(page=${page - 1}, search=${search})}"
+           class="w-10 h-10 flex items-center justify-center
+              bg-black rounded-full hover:bg-gray-900 transition">
+            <img th:src="@{/svg-icons/arrow.svg}"
+                 class="w-5 h-5 invert scale-x-[-1]"
+                 alt="previous"/>
+        </a>
+
+        <!-- Disabled previous -->
+        <div th:if="${page == 0}"
+             class="w-10 h-10 flex items-center justify-center
+                bg-gray-800 rounded-full cursor-not-allowed">
+            <img th:src="@{/svg-icons/arrow.svg}"
+                 class="w-5 h-5 invert scale-x-[-1] opacity-50"
+                 alt="previous-disabled"/>
+        </div>
+
+        <!-- Page indicator -->
+        <span class="text-white font-semibold text-lg">
+        <span th:text="${page}"></span>/<span th:text="${totalPages}"></span>
+    </span>
+
+        <!-- Next -->
+        <a th:if="${page < totalPages}"
+           th:href="@{/topics(page=${page + 1}, search=${search})}"
+           class="w-10 h-10 flex items-center justify-center
+              bg-black rounded-full hover:bg-gray-900 transition">
+            <img th:src="@{/svg-icons/arrow.svg}"
+                 class="w-5 h-5 invert"
+                 alt="next"/>
+        </a>
+
+        <!-- Disabled next -->
+        <div th:if="${page == totalPages}"
+             class="w-10 h-10 flex items-center justify-center
+                bg-gray-400 rounded-full cursor-not-allowed">
+            <img th:src="@{/svg-icons/arrow.svg}"
+                 class="w-5 h-5 invert opacity-50"
+                 alt="next-disabled" />
+        </div>
+
+    </div>
+
 
 </div>
 
