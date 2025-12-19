@@ -80,10 +80,11 @@
                 </div>
             </div>
 
-            <!-- BOTTOM ROW: author label + btns(right aligned) -->
-            <div class="flex justify-end items-center gap-4 mt-2 text-sm text-gray-500">
-                <div class="flex justify-end items-center gap-4 mt-2 text-sm text-gray-500">
+            <!-- BOTTOM ROW: buttons on the left, author on the right -->
+            <div class="flex items-center justify-between mt-2 text-sm text-gray-500">
 
+                <!-- LEFT: buttons -->
+                <div class="flex items-center gap-4">
                     <!-- Edit btn -->
                     <button
                             class="text-blue-600 hover:underline"
@@ -97,14 +98,13 @@
                             th:onclick="|deletePost(${p.id})|">
                         Delete
                     </button>
-
                 </div>
 
-                <!-- Author -->
+                <!-- RIGHT: author -->
                 <span th:text="${'<From: ' + p.author() + '>'}"></span>
 
-
             </div>
+
 
 
         </div>
