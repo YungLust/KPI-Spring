@@ -54,7 +54,8 @@ public class TopicService {
     }
 
     public Topic getTopic(int id) {
-        return topicRepo.findById(id);
+        return topicRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Topic not found"));
     }
 
     public void createTopic(Topic topic) {
@@ -62,6 +63,6 @@ public class TopicService {
     }
 
     public void deleteTopic(int id) {
-        topicRepo.delete(id);
+        topicRepo.deleteById(id);
     }
 }
